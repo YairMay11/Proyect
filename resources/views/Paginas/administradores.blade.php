@@ -48,14 +48,52 @@
 
             <div class="card-header">
 
+              <button class="btn btn-primary btn-sm">Crar Nuevo adminitrador</button>
 
             </div>
 
             <div class="card-body">
+              <table class="table table-bordered table-striped" width="100%">
 
-                @foreach ($administradores as $element)
-                  {{ $element }}
+                <thead>
+
+                  <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th width="100px">Foto</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                  </tr>
+
+
+                </thead>
+
+                <tbody>
+
+                  @foreach ($administradores as $key=> $value)
+
+                  <tr>
+                  <td>{{$key+1}}</td>
+                  <td>{{$value["name"]}}</td>
+                  <td>{{$value["email"]}}</td>
+                  <td><img src="{{$value["foto"]}}" class="img-fluid "></td>
+                  <td>{{$value["rol"]}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button class="btn btn-warning btn-sm">
+                        <i class="fas fa-pencil-alt text-white"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </div>
+                  </td>
+                  </tr>
+
                 @endforeach
+                </tbody>
+              </table>
 
             </div>
 
