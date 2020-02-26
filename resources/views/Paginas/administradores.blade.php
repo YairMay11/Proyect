@@ -58,15 +58,38 @@
                                 <tbody>
                                     @foreach ($administradores as $key=> $value)
 
+
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $value["name"] }}</td>
-                                        <td>{{ $value["email"] }}</td>
-                                        <td>
-                                            <img src="{{ $value["foto"] }}"
-                                            class="img-fluid ">
-                                        </td>
-                                        <td>{{ $value["rol"] }}</td>
+                     
+                                      <td>{{($key+1)}}</td> 
+                                      <td>{{($value["name"])}}</td> 
+                                      <td>{{($value["email"])}}</td> 
+                                      
+                
+                                          @php
+
+                                          if($value["foto"] == ""){
+                    
+                                            echo '<td><img src="'.url('/').'/img/administradores/user.jpg" class="img-fluid "></td>';
+                    
+                                          }else{
+                    
+                    
+                                            echo '<td><img src="'.url('/').'/'.$value["foto"].'" class="img-fluid "></td>';
+                    
+                                          }
+                    
+                                          if($value["rol"] == ""){
+                    
+                                            echo '<td>administrador</td>';
+                    
+                                          }else{
+                    
+                                            echo '<td>'.$value["rol"].'</td>';
+                                          }
+                                           
+                                          @endphp
+                                       
                                         <td>
                                             <div class="btn-group">
                                                 <button
